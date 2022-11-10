@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('user_row_#(@user.id)', partial: 'users/user', locals: {user: @user})}
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("user_row_#{@user.id}", partial: 'users/user', locals: { user: @user })}
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -49,6 +49,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("user_row_#{@user.id}")}
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
