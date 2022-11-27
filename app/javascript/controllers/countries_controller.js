@@ -12,7 +12,7 @@ export default class extends Controller {
 
   loadCountryStates(){
     const selectedCountry = this.element.options[this.element.selectedIndex].value
-    this.url = '/users/fetch_country_states?country_code=${selectedCountry}'
+    this.url = '/users/fetch_country_states?country_code=' + selectedCountry
     fetch(this.url,{
       headers: {
         Accept: "text/vnd.turbo-stream.html"

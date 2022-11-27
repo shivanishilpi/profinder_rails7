@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :images
+  resources :plants
   resources :users do
      collection do
       get :fetch_country_states
