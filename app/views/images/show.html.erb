@@ -6,5 +6,5 @@
   <%= link_to "Edit this image", edit_image_path(@image) %> |
   <%= link_to "Back to images", images_path %>
 
-  <%= button_to "Destroy this image", @image, method: :delete %>
+  <%= link_to "Destroy this image", @image, method: :delete, data: { confirm: "Are you sure" } %>
 </div>
