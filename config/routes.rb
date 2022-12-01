@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  patch 'drag/plants'
   resources :images
   resources :plants
   resources :users do

@@ -2,7 +2,7 @@ class PlantsController < ApplicationController
   before_action :set_plant, only: %i[ show edit update destroy ]
 
   def index
-    @plants = Plant.all
+    @plants = Plant.all.order(position: :asc)
   end
 
   def show

@@ -6,4 +6,4 @@ import * as bootstrap from "bootstrap"
 import Rails from "@rails/ujs";
 Rails.start();
 
-window.bootstrap = bootstrap
+// window.bootstrap = bootstrap
