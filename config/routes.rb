@@ -8,6 +8,7 @@ Rails.application.routes.draw do
      end
   end
   root 'home#index'
+  get 'tool/index'  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
