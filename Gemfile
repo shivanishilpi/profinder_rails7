@@ -77,3 +77,4 @@ gem "cssbundling-rails"
 gem 'country_select', '~> 6.0'
 
 gem "acts_as_list", "~> 1.0"
+gem "devise"
