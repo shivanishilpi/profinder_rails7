@@ -15,12 +15,21 @@ export default class extends Controller {
     url = event.target.getAttribute("data-url")
     event.dataTransfer.effectAllowed = "move";
   }
+  
+  dragOver(event){
+    event.preventDefault();
+    return true;
+  }
+
+  dragEnter(event){
+    event.preventDefault();
+  }
 
   drop(event){
     event.preventDefault();
     let parentID = event.target.getAttribute(dataParent);
     const dropTarget = this.findDropTarget(event.target, parentID);
-    const draggedItem = document.querySelector('[data-resource-id="${resourceID}"]')
+    const draggedItem = document.querySelector(`[data-resource-id="${resourceID}"]`)
     if (draggedItem === null || dropTarget === null ){
       return true;
     }
@@ -44,14 +53,19 @@ export default class extends Controller {
       credentials: "same-origin",
       headers: {
         "Content-Type": "application/json",
+        "X-CSRF-Token": getMetaValue("csrf-token"),
       },
       body: data,
     })
+      .then(response => response.text())
+      .then(html => {
+        this.plantsTarget.innerHTML = html
+      })
   }
 
-  dragOver(event){
-    event.preventDefault();
-    return true;
+  getMetaValue(name){
+    const element = document.head.querySelector(`meta[name="${name}"]`);
+    return element.getAttribute("content");
   }
 
   findDropTarget(target, parentID) {

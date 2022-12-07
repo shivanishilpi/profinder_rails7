@@ -2,6 +2,15 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import * as bootstrap from "bootstrap"
+import "@fortawesome/fontawesome-free"
+
+import jQuery from "jquery";
+
+// NOTE: make jQuery global if needed
+window.$ = window.jQuery = jQuery;
+
+console.log($); // ok
+
 
 import Rails from "@rails/ujs";
 Rails.start();

@@ -4,25 +4,7 @@
   <%= link_to "New plant", new_plant_path, class: "btn btn-primary btn-lg mb-3" %>
   <div id="plants">
     <% @plants.each do |plant| %>
-      <div class="card shadow mb-3">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-5">
-              <%= image_tag plant.image, class: "img-fluid" if plant.image.attached? %>
-            </div>
-            <div class="col-lg-7">
-            </div>
-          </div>
-          <%# if current_user&.admin? %>
-            <%= render "plants/draggable", plant: plant %>
-          <%# else %>  
-            <%#= render plant %> 
-          <%# end %>  
-          <p>
-            <%= link_to "Show this plant", plant, class: "btn btn-primary" %>
-          </p>
-        </div>
-      </div>
+      <%= render "plants/draggable", plant: plant %>
     <% end %>
   </div>
 </div>
