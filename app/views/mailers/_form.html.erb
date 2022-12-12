@@ -10,23 +10,23 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="form-group">
+    <%= form.label :to, class: "form-label mb-2 mt-3" %>
+    <%= form.text_area :to, class: "form-control" %>
+  </div>
 
-  <div>
-    <%= form.label :to, style: "display: block" %>
-    <%= form.text_area :to %>
+  <div class="form-group">
+    <%= form.label :subject, class: "form-label mb-2 mt-3" %>
+    <%= form.text_field :subject, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :body, class: "form-label mb-2 mt-3" %>
+    <%= form.text_area :body, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :subject, style: "display: block" %>
-    <%= form.text_field :subject %>
-  </div>
-
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit  %>
   </div>
 <% end %>
