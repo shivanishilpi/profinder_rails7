@@ -6,6 +6,7 @@ class PlantsController < ApplicationController
   end
 
   def show
+    @plant = Plant.find(params[:id])
   end
 
   def new
@@ -53,6 +54,10 @@ class PlantsController < ApplicationController
   private
     def set_plant
       @plant = Plant.find(params[:id])
+    end
+
+    def set_notable
+      @notable = Plant.find(params[:plant_id])
     end
 
     def plant_params

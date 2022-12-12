@@ -1,11 +1,19 @@
 class NotesController < ApplicationController
     # before_action :authenticate_agent!, except: :index
     before_action :load_notable
+    
+    def new
+        @note = @notable.notes.build
+    end
+    
+    def show
+       @note = @notable.notes.params[:id]
+    end 
 
     def create
         @note = @notable.notes.new(notable_id: params[:notable_id], notable_type: params[:notable_type], title: params[:title], body: params[:body])
         if @note.save
-            redirect_to :back, notice: "Note created."
+            redirect_to :@notable, notice: "Note created."
         else 
             render :new
         end
@@ -28,8 +36,10 @@ class NotesController < ApplicationController
     private
      
     def load_notable
-        if params[:user_id]
-            @notable = User.find(params[:user_id])
+        if params[:image_id]
+            @notable = Image.find(params[:image_id])
+        else 
+            @notable = Plant.find(params[:plant_id])
         end
     end
 

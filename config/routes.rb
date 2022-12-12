@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   devise_for :agents
   resources :mailers
-  resources :images
-  resources :plants
+  resources :images do
+    resources :notes
+  end
+  resources :plants do 
+    resources :notes
+  end
   resources :users do
      collection do
       get :fetch_country_states
