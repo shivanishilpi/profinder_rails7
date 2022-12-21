@@ -56,10 +56,6 @@ class PlantsController < ApplicationController
       @plant = Plant.find(params[:id])
     end
 
-    def set_notable
-      @notable = Plant.find(params[:plant_id])
-    end
-
     def plant_params
       params.require(:plant).permit(:name, :price, :image)
     end

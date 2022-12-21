@@ -3,17 +3,13 @@ class NotesController < ApplicationController
     before_action :load_notable
     
     def new
-        @note = @notable.notes.build
-    end
-    
-    def show
-       @note = @notable.notes.params[:id]
+        @note = @notable.notes.new
     end 
 
     def create
-        @note = @notable.notes.new(notable_id: params[:notable_id], notable_type: params[:notable_type], title: params[:title], body: params[:body])
-        if @note.save
-            redirect_to :@notable, notice: "Note created."
+        @note = @notable.notes.new(note_params)
+        if @notable.save
+            redirect_to @notable, notice: "Note is Created."
         else 
             render :new
         end
@@ -21,17 +17,23 @@ class NotesController < ApplicationController
 
     def destroy
         @note = Note.find(params[:id])
-        @note.destroy
-    end 
+        if @note.destroy
+            redirect_to @notable, notice: "Note deleted." 
+        end
+    end
+
+    def edit
+        @note = Note.find(params[:id])
+    end
 
     def update
         @note = Note.find(params[:id])
         if @note.update(note_params)
-            redirect_to @note
+            redirect_to @notable, notice: "Note is Updated"
         else
             render :edit
         end
-    end 
+    end
 
     private
      
