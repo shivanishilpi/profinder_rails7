@@ -13,7 +13,6 @@
 
 <%= link_to "New recipe", new_recipe_path %>
 
-
 <br/><br/><br/>
 <div data-controller="practice">
   <input data-practice-target="name" type="text">
@@ -23,18 +22,18 @@
 <p id="demo"></p>
 
 <div data-controller="clipboard">
- PIN: <input data-clipboard-target="source" type="text" value="1234" readonly>
+ PIN1: <input data-clipboard-target="source" type="text" value="1234" readonly>
  <button data-action="clipboard#copy">Copy to Clipboard</button>
 </div>
 
 <div data-controller="clipboard">
-  PIN: <input data-clipboard-target="source" type="text" value="3737" readonly>
+  PIN2: <input data-clipboard-target="source" type="text" value="3737" readonly>
   <button data-action="clipboard#copy">Copy to Clipboard</button>
 </div>
 
 <div data-controller="clipboard">
-  PIN: <input data-clipboard-target="source" type="text" value="37337" readonly>
+  PIN3: <input data-clipboard-target="source" type="text" value="37337" readonly>
   <a href="#" data-action="clipboard#copy">Copy to Clipboard</a>
 </div>
 
- PIN: <textarea data-clipboard-target="source" readonly>3737</textarea>
+ PIN4: <textarea data-clipboard-target="source" readonly>3737</textarea>
