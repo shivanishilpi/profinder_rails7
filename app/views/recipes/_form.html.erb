@@ -2,7 +2,8 @@
 <div data-controller=dynamic-dropdown>
     <div class="field">
       <%= form.label :dish_type %>
-      <%= form.select :dish_type, Recipe.dish_types, {}, { data: { action: 'dynamic-dropdown#change', 'dynamic-dropdown-target' => 'dropdown' } } %>
+      <%#= form.select :dish_type, Recipe.dish_types, {}, { data: { action: 'dynamic-dropdown#change', 'dynamic-dropdown-target' => 'dropdown' } } %>
+      <%= form.text_field :dish_type %>
     </div>
     <div data-dynamic-dropdown-target=content data-target-value=0>
       <h1>Main dish</h1>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Pationts</h1>
+
+<div id="pationts">
+  <% @pationts.each do |pationt| %>
+    <%= render pationt %>
+    <p>
+      <%= link_to "Show this pationt", pationt %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New pationt", new_pationt_path %>

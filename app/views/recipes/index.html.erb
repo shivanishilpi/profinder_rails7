@@ -14,6 +14,7 @@
 <%= link_to "New recipe", new_recipe_path %>
 
 <br/><br/><br/>
+<!-- 
 <div data-controller="practice">
   <input data-practice-target="name" type="text">
   <button data-action="click->practice#greet">Greet</button>
@@ -36,4 +37,17 @@
   <a href="#" data-action="clipboard#copy">Copy to Clipboard</a>
 </div>
 
- PIN4: <textarea data-clipboard-target="source" readonly>3737</textarea>
+ PIN4: <textarea data-clipboard-target="source" readonly>3737</textarea> -->
+
+  <div data-controller="clipboard" data-clipboard-supported-class="clipboard--supported">
+    <button data-action="clipboard#copy" class="clipboard-button">Copy to Clipboard</button>
+
+    <style>
+      .clipboard-button {
+       display: none;
+      }
+
+      .clipboard--supported .clipboard-button {
+        display: initial;
+      }
+    </style>
