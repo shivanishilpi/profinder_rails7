@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :pationts 
+  resources :appointments
+  resources :physicians 
+  resources :snippets
+  get 'snippets/new'
+  
   devise_for :agents
   resources :mailers
   resources :images do
@@ -13,9 +19,13 @@ Rails.application.routes.draw do
      end
   end
   root 'home#index'
-  get 'tool/index'  
+  get 'tool/index' 
+  get "home/render_user_data", to: "home#render_user_data"
+   
   patch 'drag/plant'
-  resources 'recipes'
+  resources 'recipes' do
+    resource :famouse_recipe_city
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

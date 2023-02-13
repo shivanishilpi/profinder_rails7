@@ -23,6 +23,16 @@ class PhysiciansController < ApplicationController
   def create
     @physician = Physician.new(physician_params)
 
+    # pationt_to_add = params[:physician][:pationt_ids]
+
+    # pationt_to_add.each do |pationt_id|
+    #   if pationt_id != ""
+    #     pationt_id = pationt_id.to_i
+    #     pationt_to_add = Pationt.find_by_id(pationt_id)
+    #     @physician.pationts << pationt_to_add
+    #   end
+    # end
+
     respond_to do |format|
       if @physician.save
         format.html { redirect_to physician_url(@physician), notice: "Physician was successfully created." }
@@ -65,6 +75,6 @@ class PhysiciansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def physician_params
-      params.require(:physician).permit(:name)
+      params.require(:physician).permit(:name, pationt_ids: [])
     end
 end
