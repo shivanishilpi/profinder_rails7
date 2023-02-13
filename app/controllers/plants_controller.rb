@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-  before_action :set_plant, only: %i[ show edit update destroy ]
+  before_action :set_plant, only: %i[ show edit update destroy]
 
   def index
     @plants = Plant.all.order(position: :asc)
@@ -28,6 +28,27 @@ class PlantsController < ApplicationController
         format.json { render json: @plant.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def plant_pdf
+    
+		flash[:notice] = "Please wait, we will mail the PDF on your email"
+		# @base_url = "#{request.protocol}"
+		# @base_url_host = "#{request.host_with_port}"
+    # PlantPdfWorker.perform_later(@plant.id)
+    file = WickedPdf.new.pdf_from_string(render_to_string(template: 'plant/plant_pdf.pdf.erb', locals: { plant: @plant.id }))
+    send_data(file, filename: "file_name.pdf", type: 'application/pdf')
+		redirect_to plant_path(@plant)
+  end
+
+  def plant_csv
+		csv_method_result,csv_location = @course.generate_csv_report
+		if csv_method_result==1
+			send_file csv_location, :type => "application/csv"
+		else
+			flash[:alert] ="Team not found or there are no responses."
+			redirect_to plants_path
+		end
   end
 
   def update

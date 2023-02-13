@@ -82,3 +82,5 @@ gem "devise"
 
 gem 'sidekiq'
 gem 'coderay'
+gem 'wicked_pdf'
+# gem 'wkhtmltopdf-binary'

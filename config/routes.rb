@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   end
   resources :plants do 
     resources :notes
+    collection do
+      get 'plant_pdf'
+      get 'plant_csv'
+    end
   end
   resources :users do
      collection do
