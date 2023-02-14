@@ -80,7 +80,8 @@ gem "acts_as_list", "~> 1.0"
 gem "devise"
 # gem 'ajax-datatables-rails'
 
-gem 'sidekiq'
+gem 'sidekiq', '~> 5.2.8'
 gem 'coderay'
 gem 'wicked_pdf'
-# gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary'
+gem 'redis-client'

@@ -18,7 +18,7 @@ class PlantsController < ApplicationController
 
   def create
     @plant = Plant.new(plant_params)
-
+ 
     respond_to do |format|
       if @plant.save
         format.html { redirect_to plant_url(@plant), notice: "Plant was successfully created." }
@@ -31,14 +31,11 @@ class PlantsController < ApplicationController
   end
 
   def plant_pdf
-    
-		flash[:notice] = "Please wait, we will mail the PDF on your email"
-		# @base_url = "#{request.protocol}"
-		# @base_url_host = "#{request.host_with_port}"
-    # PlantPdfWorker.perform_later(@plant.id)
-    file = WickedPdf.new.pdf_from_string(render_to_string(template: 'plant/plant_pdf.pdf.erb', locals: { plant: @plant.id }))
-    send_data(file, filename: "file_name.pdf", type: 'application/pdf')
-		redirect_to plant_path(@plant)
+   
+		# flash[:notice] = "Please wait, we will mail the PDF on your email"
+    PlantsPdfWorker.perform_at(@plant)
+    # file = WickedPdf.new.pdf_from_string(render_to_string(template: 'plants/plant_pdf'))
+    # send_data(file, filename: "file.pdf", type: 'application/pdf')
   end
 
   def plant_csv
