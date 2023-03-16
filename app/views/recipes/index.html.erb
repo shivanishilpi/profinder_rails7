@@ -1,19 +1,31 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Recipes</h1>
-
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-    <p>
-      <%= link_to "Show this recipe", recipe %>
-    </p>
-  <% end %>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Dish Type</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Show</th>
+      <th scope="col">Destroy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.name %></td>
+        <td><%= recipe.dish_type %></td>
+        <td><%= link_to "Edit", edit_recipe_path(recipe) %></td>
+        <td><%= link_to "Show", recipe_path(recipe) %></td>
+        <td><%= link_to "Destroy", recipe, data: { turbo_confirm: "Are you sure you want to delete this user", turbo_method: :delete } %></td>
+      </tr>
+    <% end %>  
+  </tbody>
+</table>
 
 <%= link_to "New recipe", new_recipe_path %>
 
-<br/><br/><br/>
+
+
 <!-- 
 <div data-controller="practice">
   <input data-practice-target="name" type="text">
@@ -37,7 +49,7 @@
   <a href="#" data-action="clipboard#copy">Copy to Clipboard</a>
 </div>
 
- PIN4: <textarea data-clipboard-target="source" readonly>3737</textarea> -->
+ PIN4: <textarea data-clipboard-target="source" readonly>3737</textarea>
 
   <div data-controller="clipboard" data-clipboard-supported-class="clipboard--supported">
     <button data-action="clipboard#copy" class="clipboard-button">Copy to Clipboard</button>
@@ -50,4 +62,4 @@
       .clipboard--supported .clipboard-button {
         display: initial;
       }
-    </style>
+    </style> -->

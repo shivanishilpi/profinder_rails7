@@ -1,25 +1,22 @@
 class PhysiciansController < ApplicationController
   before_action :set_physician, only: %i[ show edit update destroy ]
 
-  # GET /physicians or /physicians.json
   def index
     @physicians = Physician.all
   end
 
-  # GET /physicians/1 or /physicians/1.json
   def show
+    @physician_decorator = helpers.decorate(@physician)
+    @abc = FullName.new(@physician).to_s
   end
 
-  # GET /physicians/new
   def new
     @physician = Physician.new
   end
 
-  # GET /physicians/1/edit
   def edit
   end
 
-  # POST /physicians or /physicians.json
   def create
     @physician = Physician.new(physician_params)
 
@@ -44,7 +41,6 @@ class PhysiciansController < ApplicationController
     end
   end
 
-  # PATCH/PUT /physicians/1 or /physicians/1.json
   def update
     respond_to do |format|
       if @physician.update(physician_params)
@@ -57,7 +53,6 @@ class PhysiciansController < ApplicationController
     end
   end
 
-  # DELETE /physicians/1 or /physicians/1.json
   def destroy
     @physician.destroy
 
@@ -68,13 +63,11 @@ class PhysiciansController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_physician
       @physician = Physician.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def physician_params
-      params.require(:physician).permit(:name, pationt_ids: [])
+      params.require(:physician).permit(:name, :last_name, pationt_ids: [])
     end
 end

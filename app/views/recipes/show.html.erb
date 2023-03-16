@@ -9,8 +9,7 @@
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
 </div>
 
-
-<%= form_with(model: [@recipe, @famouse_recipe_city ], url: recipe_famouse_recipe_city_path(@recipe)) do |form| %>
+<!-- <%= form_with(model: [@recipe, @famouse_recipe_city ], url: recipe_famouse_recipe_city_path(@recipe)) do |form| %>
 <div>
    <%= form.label :place %>
    <%= form.text_field :place %>
@@ -24,4 +23,4 @@
 <% @famouse_recipe_city.each do |frc| %>
    <%= frc.place %>
    <%= frc.city %>
-<% end %>
+<% end %>  -->

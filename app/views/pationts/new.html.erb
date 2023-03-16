@@ -1,23 +1,29 @@
-<h1>New pationt</h1>
+<h3>New pationt</h3>
 
 <%# render "form", pationt: @pationt %>
 
 <%= form_for(@pationt) do |pationt_form| %>
   
-  <p>
-    <%= pationt_form.label :name, "Pationt Name" %>
-    <%= pationt_form.text_field :name %>
-  </p>
-  <%= pationt_form.fields_for :physicians do |physician_form| %>
-    <p>
-      <%= physician_form.label :name, "Physician Name" %>
-      <%= physician_form.text_field :name %>
-    </p>
- <% end %>
+  <div class="form-group">
+    <%= pationt_form.label :name, "Pationt Name", class: "form-label mb-2 mt-3" %>
+    <%= pationt_form.text_field :name, class: "form-control form-control-lg" %>
+  </div>
 
-  <p>
+  <div class="form-group">
+     <%= pationt_form.label :last_name, style: "display: block", class: "form-label mb-2 mt-3"  %>
+     <%= pationt_form.text_field :last_name, class: "form-control form-control-lg" %>
+   </div>
+
+ <!-- <%= pationt_form.fields_for :physicians do |physician_form| %>
+    <div class="form-group">
+      <%= physician_form.label :name, "Physician Name", class: "form-label mb-2 mt-3"  %>
+      <%= physician_form.text_field :name, class: "form-control form-control-lg" %>
+    </div>
+ <% end %> -->
+  
+  <div class="form-group">
     <%= pationt_form.submit 'Create' %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Back', pationts_path %>
