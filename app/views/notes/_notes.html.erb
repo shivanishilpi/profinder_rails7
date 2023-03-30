@@ -6,6 +6,11 @@
   <div>
     <%= note.body %>
   </div>
+   
+  <div>
+    <%= note.content %>
+  </div>
+
   <div>
     <%= link_to "Destroy", "/#{note.notable_type.downcase.pluralize}/#{note.notable_id}/notes/#{note.id}", method: :delete, data: {confirm: "Are you sure"} %> |
     <%= link_to "Edit", "/#{note.notable_type.downcase.pluralize}/#{note.notable_id}/notes/#{note.id}/edit", data: { bs_toggle: "modal", bs_target: "#editNoteModal", remote: true } %>

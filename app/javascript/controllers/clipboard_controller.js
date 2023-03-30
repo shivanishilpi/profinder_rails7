@@ -10,9 +10,6 @@ export default class extends Controller {
     }
   }
 
-  // copy(){
-  //   navigator.clipboard.writeText(this.sourceTarget.value)
-  // }
   copy(event) {
     event.preventDefault()
     navigator.clipboard.writeText(this.sourceTarget.value)

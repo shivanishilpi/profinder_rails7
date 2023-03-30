@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.turbo_stream { render turbo_stream: turbo_stream.append('user_list', partial: 'users/user', locals: {user: @user})}

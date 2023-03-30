@@ -31,11 +31,10 @@ class PlantsController < ApplicationController
   end
 
   def plant_pdf
-   
-		# flash[:notice] = "Please wait, we will mail the PDF on your email"
-    PlantsPdfWorker.perform_at(@plant)
-    # file = WickedPdf.new.pdf_from_string(render_to_string(template: 'plants/plant_pdf'))
-    # send_data(file, filename: "file.pdf", type: 'application/pdf')
+		flash[:notice] = "Please wait, we will mail the PDF on your email"
+    # PlantsPdfWorker.perform_at(@plant)
+    file = WickedPdf.new.pdf_from_string(render_to_string(template: 'plants/plant_pdf'))
+    send_data(file, filename: "file.pdf", type: 'application/pdf')
   end
 
   def plant_csv

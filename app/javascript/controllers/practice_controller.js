@@ -7,11 +7,6 @@ export default class extends Controller {
   connect() {
   }
 
-  // greet(){
-  //   const element = this.nameTarget.value
-  //   console.log(`HEllo, ${element}!`)
-  // }
-
   greet(){
     document.getElementById('demo').innerHTML= (`Hello, ${this.name}!`)
   }
