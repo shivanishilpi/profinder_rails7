@@ -7,5 +7,10 @@
 
 <p>Likes: <%= @post.likes_count %></p>
 
-<%= link_to 'Like', post_likes_path(@post), method: :post %>
-<%= link_to 'Unlike', post_like_path(@post, @post.likes.last), method: :delete %>
+<% if agent_signed_in? %>
+  <% if current_agent.likes?(@post) %>
+    <%= link_to 'Unlike', post_like_path(@post, @post.likes.find_by(agent: current_agent)), method: :delete %>
+  <% else %>
+    <%= link_to 'Like', post_likes_path(@post), method: :post %>
+  <% end %>
+<% end %>
