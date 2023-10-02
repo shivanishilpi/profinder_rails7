@@ -1,0 +1,13 @@
+<%= form_with(model: @post) do |f| %>
+   <div>
+        <strong>Title:</strong>
+        <%= f.text_field :title %>
+   </div>
+   <div>
+        <strong>Content:</strong>
+        <%= f.text_area :content %>
+   </div>
+   <div>
+     <%= f.submit "save" %>
+   </div>
+<% end %>
